@@ -24,20 +24,11 @@
         </intent-filter>
       </activity>
 
-      <activity-alias
-          android:name=".MainActivityDefault"
-          android:enabled="true"
-          android:exported="true"
-          android:icon="@mipmap/ic_launcher_default"
-          android:targetActivity=".MainActivity">
-          <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-          </intent-filter>
-      </activity-alias>
+      
 
-      <activity-alias
+      <!-- <activity-alias
           android:name=".MainActivityDog"
-          android:enabled="false"
+          android:enabled="true"
           android:exported="true"
           android:icon="@mipmap/ic_launcher_dog"
           android:targetActivity=".MainActivity">
@@ -57,7 +48,7 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
           </intent-filter>
-      </activity-alias>
+      </activity-alias> -->
 
 
     </application>

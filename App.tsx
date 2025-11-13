@@ -1,45 +1,43 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { Button, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { changeIcon } from '@computools/react-native-dynamic-app-icon';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+const App = () => {
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
+  useEffect(()=>{
+      const fetchIconApp = async ()=>{
+        try{
+            const res = await fetch('http://192.168.1.48:3000')
+            const data = await res.json()
+            console.log(data.icon);
+            setAppIcon(data.icon)
+            
+        }catch(e){
+          console.log(e);
+        }
+      }
+      fetchIconApp()
+  },[])
+  
+
+
+  const setAppIcon = async (text:String) => {
+  try {
+    await changeIcon(`${text}`);
+  } catch (error) {
+    console.log(error);
+  }
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
   return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
+    <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
+      {/* <Button title='đổi icon mèo khác ' onPress={()=>{changeIcon('Dog')}}/>
+      <Button title='đổi icon mèo ' onPress={()=>{changeIcon('Cat')}}/> */}
+        <Text>HIHIHI</Text>
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+export default App
 
-export default App;
+const styles = StyleSheet.create({})
